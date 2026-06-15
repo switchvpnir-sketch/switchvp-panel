@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SwitchVP Node — وضعیت</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--p1:#a855f7;--p2:#22d3ee;--p3:#6366f1;--tx:#e9edf4;--mut:#8b93a7;--glass:rgba(20,24,33,.55);--bd:rgba(255,255,255,.10);--bd2:rgba(255,255,255,.16)}
+body{font-family:Vazirmatn,system-ui,Segoe UI,Tahoma,sans-serif;background:#06070a;color:var(--tx);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-20%;z-index:-2;background:radial-gradient(40% 50% at 20% 20%,rgba(168,85,247,.30),transparent 60%),radial-gradient(45% 55% at 82% 25%,rgba(34,211,238,.26),transparent 60%),radial-gradient(50% 60% at 50% 92%,rgba(99,102,241,.22),transparent 62%);filter:blur(40px) saturate(140%);animation:aur 22s ease-in-out infinite alternate}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}50%{transform:translate(2%,-2%) rotate(5deg) scale(1.08)}100%{transform:translate(-2%,2%) rotate(-4deg) scale(1.04)}}
+.card{max-width:500px;width:100%;background:var(--glass);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid var(--bd);border-radius:24px;padding:32px;box-shadow:0 0 0 1px rgba(255,255,255,.05),0 24px 70px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12);position:relative;overflow:hidden;animation:in .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:45%;background:linear-gradient(180deg,rgba(255,255,255,.08),transparent);pointer-events:none}
+.brand{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.logo{width:50px;height:50px;filter:drop-shadow(0 0 12px rgba(168,85,247,.5))}
+.bt{font-size:22px;font-weight:800;background:linear-gradient(120deg,#fff,#c4b5fd 40%,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.bs{font-size:11px;color:var(--mut)}
+.hero{display:flex;align-items:center;gap:18px;margin:20px 0;flex-wrap:wrap}
+.ring{position:relative;width:96px;height:96px;flex:0 0 auto}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;font-weight:800;font-size:20px}
+.ring .pct small{font-size:10px;color:var(--mut);font-weight:600}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:20px;font-weight:700;font-size:13px;backdrop-filter:blur(10px);border:1px solid var(--bd2)}
+.badge.ok{background:rgba(52,211,153,.14);color:#4ade80}.badge.no{background:rgba(248,113,113,.14);color:#fda4af}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.pulse{animation:p 1.8s infinite}@keyframes p{0%,100%{opacity:1}50%{opacity:.35}}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.tile{background:rgba(0,0,0,.25);border:1px solid var(--bd);border-radius:14px;padding:13px 15px}
+.tile .k{color:var(--mut);font-size:11.5px;margin-bottom:4px}
+.tile .v{font-weight:700;font-size:14.5px;direction:ltr;text-align:right;word-break:break-all}
+.note{color:var(--mut);font-size:12.5px;line-height:1.9;margin-top:18px;padding-top:16px;border-top:1px solid var(--bd)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect x="3" y="16" width="58" height="32" rx="16" fill="url(#sg)"/><circle cx="45" cy="32" r="11" fill="#0b0d11"/><path d="M40 32h10M46 28l4 4-4 4" stroke="url(#sg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 32h12M22 27l5 5-5 5" stroke="#0b0d11" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><div class="bt">SwitchVP Node</div><div class="bs">نود پردازش ترافیک · Edge Node</div></div>
+  </div>
+  <div class="hero">
+    <div class="ring">
+      <svg width="96" height="96"><circle cx="48" cy="48" r="42" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="8"/><circle id="ringArc" cx="48" cy="48" r="42" fill="none" stroke="url(#rg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/><defs><linearGradient id="rg" x1="0" y1="0" x2="96" y2="96"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs></svg>
+      <div class="pct"><span id="ringPct">—</span><small>سلامت</small></div>
+    </div>
+    <div style="flex:1;min-width:160px">
+      <div class="badge no" id="badge"><span class="dot pulse"></span> <span id="badgeText">در حال بررسی…</span></div>
+      <p style="color:var(--mut);font-size:12.5px;margin-top:10px;line-height:1.7">این نود زنده است و توسط مرکز کنترل SwitchVP مدیریت می‌شود.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="tile"><div class="k">نسخه</div><div class="v" id="version">—</div></div>
+    <div class="tile"><div class="k">دیتاسنتر (COLO)</div><div class="v" id="colo">—</div></div>
+    <div class="tile"><div class="k">کشور</div><div class="v" id="country">—</div></div>
+    <div class="tile"><div class="k">آپتایم</div><div class="v" id="uptime">—</div></div>
+    <div class="tile" style="grid-column:1/-1"><div class="k">مرکز کنترل</div><div class="v" id="central">—</div></div>
+    <div class="tile" style="grid-column:1/-1"><div class="k">proxyIP فعال</div><div class="v" id="proxyip">—</div></div>
+  </div>
+  <p class="note">🔒 تنظیمات شبکه، کاربران، حجم و سوییچ خودکار از پنل مرکزی SwitchVP کنترل می‌شوند. این صفحه فقط وضعیت نود را نمایش می‌دهد.</p>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let t0=Date.now();
+function setRing(p){const o=264-(264*Math.max(0,Math.min(100,p))/100);$('ringArc').style.transition='stroke-dashoffset 1s cubic-bezier(.2,.8,.2,1)';$('ringArc').style.strokeDashoffset=o;$('ringPct').textContent=p+'%';}
+function fmtUp(ms){const s=Math.floor(ms/1000);if(s<60)return s+'ث';const m=Math.floor(s/60);if(m<60)return m+'د';const h=Math.floor(m/60);return h+'س '+(m%60)+'د';}
+(async()=>{
+  try{
+    const r=await fetch('/node-status.json'); const d=await r.json();
+    $('version').textContent=d.version||'?';
+    $('colo').textContent=d.colo||'?';
+    $('country').textContent=(d.country||'?');
+    $('central').textContent=d.central||'تنظیم نشده';
+    $('proxyip').textContent=d.proxyIP||'—';
+    const b=$('badge'),bt=$('badgeText');
+    if(d.connected){b.className='badge ok';bt.textContent='متصل به مرکزی';setRing(100);}
+    else{b.className='badge no';bt.textContent='اتصال مرکزی تنظیم نشده';setRing(60);}
+  }catch(e){ $('badgeText').textContent='در دسترس';$('badge').className='badge ok';setRing(100); }
+  setInterval(()=>{$('uptime').textContent=fmtUp(Date.now()-t0);},1000);
+})();
+</script>
+</body>
+</html>
